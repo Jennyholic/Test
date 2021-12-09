@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="http://code.jquery.com/jquery-latest.js"></script> 
+    <script> // jquery library file불러옴 연동
+     $(function() { // 문서객체에다가 data 입력할 거니깐
+        $.ajax({  //ajax를 이용해서 data불러오기
+            url:"MOCK_DATA.json", // 여러개 객체(여러명 회원에 대한 데이타 레코드가 배열로 있음)와 속성 만들기
+            dataType: "json", // dataType은 data 를 서버에 보낼때 타입 (html, css, json...)
+            success:function(data){ // 성공적으로 data를 불러왔을때는 석세스에 콜백함수를 적어야 함. 매개변수(data)="MOCK_DATA.json" >매개변수 이름은 아무거나 지정해도 됨
+                consle.log(data); //정상적으로 들어왔는지 콘솔창에 확인
+                var tableTag = $("<table />"); //record를 table에 생성 <table / : tag 열고 닫기를 한기능에>
+                data.forEach(function(obj, idx) { // data의 수량만큼 레코드 생성 100명이니깐 100줄의 행. function(obj, idx) -> 콜백함수(매개변수: 객체, 배열에 있는 데이타의 인덱스 값)
+                    var trTag = $("<tr/>"); //tr 태그(행) 생성 
+                    var tdId = $( "<td/>").text(obj.id);  //json객채의 아이디 속성을 가져와서  
+                });    
+
+            }
+
+        });
+     });   
+    </script>
+</head>
+<body>
+    <div class="member-wrap"></div> 
+
+</body>
+</html>
